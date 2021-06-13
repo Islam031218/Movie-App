@@ -1,41 +1,13 @@
 package com.example.movieapp
 
-class MovieRepository {
-    fun getPopularMovieList(): MutableList<Movie> {
-        val movieList = mutableListOf<Movie>()
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        return movieList
+import com.example.movieapp.interfaces.Repo
+import com.example.movieapp.retrofit.NetworkUtils
+import com.example.movieapp.retrofit.Page
+import retrofit2.Call
+
+class MovieRepository(val networkUtils: NetworkUtils) : Repo {
+    override fun getComingMovies(api_Key: String, language: String, sort_By: String): Call<Page> {
+        return networkUtils.getMovie(api_Key,language,sort_By)
     }
 
-    fun getRatedMovieList(): MutableList<Movie> {
-        val movieList = mutableListOf<Movie>()
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-
-        return movieList
-    }
-
-    fun getRatingMovieList(): MutableList<Movie> {
-        val movieList = mutableListOf<Movie>()
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-        movieList.add(Movie("Movie Titles", "About the book","00.00.00","0.0",151))
-
-        return movieList
-    }
-    fun getSpecificMovie(): String {
-        return "Movie item clicked"
-    }
 }
